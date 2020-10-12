@@ -20,8 +20,8 @@ This site’s main features will be
 
 
 # Wireframes
-- start page https://wireframe.cc/o1I7hz
-- gameplay https://wireframe.cc/oMXT8C
+- start page https://github.com/thisisnahid/soundSpace/blob/master/IMG_4999.jpg
+- gameplay https://github.com/thisisnahid/soundSpace/blob/master/IMG_5001.jpg
 
 # Implementation Timeline
 Day 1: Setup Node modules and webpack. Create basic file structure and entry file. Get familiar with the API's I will be implementing and learn how to make this project.
