@@ -13,7 +13,7 @@ This site’s main features will be
 - Web Audio API to trigger and handle audio
 - Web Animations API to assist with background animations
 - Gamepad API for controls
-- DOM manipulation
+- D3
 
 
 # Wireframes
