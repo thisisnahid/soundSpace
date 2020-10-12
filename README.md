@@ -20,6 +20,7 @@ This site’s main features will be
 
 
 # Wireframes
+- start page https://wireframe.cc/o1I7hz
 - gameplay https://wireframe.cc/oMXT8C
 
 # Implementation Timeline
