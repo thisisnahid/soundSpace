@@ -1,104 +1,130 @@
-import "./styles/index.scss";
-import "./images/yoda-stitch.jpg";
-import canvasExample from "./scripts/canvas";
-import Square from "./scripts/square";
-import { DOMExample } from "./scripts/DOMExample";
-const currentStateObj = {
-  currentExample: null,
-  currentEventListeners: [],
-};
+import game from "./lib/game";
 
-document.querySelector("#canvas-demo").addEventListener("click", startCanvas);
-document.querySelector("#DOM-demo").addEventListener("click", startDOM);
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
-function startDOM() {
-  unregisterEventListeners();
-  clearDemo();
-  currentStateObj.currentExample = "DOMDEMO";
-  DOMExample();
+let playerHeight = 30;
+let playerWidth = 26;
+let playerX = 30;
+let playerY = 423;
+
+function drawFloor() {
+    const floor = ctx.fillRect(0, 453, 1000, 1000);
+    const e = ctx.fillRect(200, 300, 20, 25);
+    const a = ctx.fillRect(310, 260, 20, 25);
+    // floor.fillStyle = "#000"
 }
-
-function startCanvas() {
-  clearDemo();
-  unregisterEventListeners();
-  currentStateObj.currentExample = "CANVASDEMO";
-  const canvas = new canvasExample();
-  canvas.createCanvas();
-  const squares = [new Square(canvas.ctx, canvas.coords, canvas.fillColor)];
-
-  let animating = true;
-
-  const animation = () => {
-    canvas.clearCanvas();
-    if (animating) squares.forEach((sq) => sq.updateSquare(canvas.fillColor));
-    squares.forEach((sq) => sq.drawSquare());
-    window.requestAnimationFrame(animation);
-    squares.forEach((sq) => {
-      if (sq.coords[0] + sq.coords[2] > window.innerWidth)
-        sq.reverseAnimation();
-      if (sq.coords[0] < 0) sq.reverseAnimation();
-    });
-  };
-
-  window.requestAnimationFrame(animation);
-
-  window.addEventListener("keydown", handleKeyDown);
-  currentStateObj.currentEventListeners.push([
-    "window",
-    "keydown",
-    handleKeyDown,
-  ]);
-
-  window.addEventListener("mousedown", handleMouseDown);
-  currentStateObj.currentEventListeners.push([
-    "window",
-    "mousedown",
-    handleMouseDown,
-  ]);
-
-  function handleKeyDown(event) {
-    if (event.which === 32) {
-      event.preventDefault();
-      squares.forEach((sq) => sq.reverseAnimation());
-      canvas.setColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
+function drawplayer() {
+    ctx.beginPath();
+    
+    ctx.arc(
+        playerX,
+        playerY,
+        playerHeight,
+        0,
+        2 * Math.PI,
+        false
+        );
+        
+        // ctx.rect(playerX, playerY, playerWidth, playerHeight);
+        ctx.fillStyle = "#FFF";
+        ctx.fill();
+        ctx.closePath();
     }
-  }
+    
+    let rightPressed = false;
+    let leftPressed = false;
+    let upPressed = false;
+    let downPressed = false;
+    
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+    
+    function keyDownHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = true;
+        }
+        else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = true;
+        } 
+        else if (e.key == "Up" || e.key == "ArrowUp") {
+            upPressed = true;
+        }
+        else if (e.key == "Down" || e.key == "ArrowDown") {
+            downPressed = true;
+        }
+    }
+    
+    function keyUpHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = false;
+        }
+        else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = false;
+        }
+        else if (e.key == "Up" || e.key == "ArrowUp") {
+            upPressed = false;
+        }
+        else if (e.key == "Down" || e.key == "ArrowDown") {
+            downPressed = false;
+        }
+    }
 
-  function handleMouseDown(event) {
-    event.preventDefault();
-    squares.push(
-      new Square(
-        canvas.ctx,
-        canvas.coords.map((co) => co + 25),
-        canvas.fillColor
-      )
-    );
-    // animating = !animating;
-  }
-}
+    
+const audio = document.getElementById('audio');
+const audioControls = document.getElementsByClassName("audio-controls")[0];
+const audioPlay = document.getElementById('audio-play');
+const audioPause = document.getElementById('audio-pause');
 
-function unregisterEventListeners() {
-  while (currentStateObj.currentEventListeners.length) {
-    let [
-      selector,
-      event,
-      handler,
-    ] = currentStateObj.currentEventListeners.pop();
-    if (selector === "window") {
-      window.removeEventListener(event, handler);
-      console.log(handler);
+
+
+audioControls.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        audioPause.classList.remove('hidden');
+        audioPlay.classList.add('hidden');
     } else {
-      document.querySelector(selector).removeEventListener(event, handler);
+        audio.pause();
+        audioPlay.classList.remove('hidden');
+        audioPause.classList.add('hidden');
     }
-  }
+})
+
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFloor();
+    drawplayer();
+
+    if (rightPressed) {
+        playerX += 5;
+        if (playerX + playerHeight > canvas.width) {
+            playerX = canvas.width - playerHeight;
+        }
+    }
+    else if (leftPressed) {
+        playerX -= 5;
+        if (playerX < 30) {
+            playerX = 30;
+        }
+    }
+    else if (upPressed) {
+        playerY -= 5;
+        
+        if (playerY < 30) {
+            playerY = 30;
+        }
+    }
+    else if (downPressed) {
+        playerY += 5;
+        if (playerY + playerHeight > canvas.height - 147) {
+            playerY = (canvas.height - 147) - playerHeight;
+        }
+    
+    }
 }
 
-function clearDemo() {
-  if (currentStateObj.currentExample === "CANVASDEMO")
-    document.body.removeChild(document.querySelector("canvas"));
-  if (currentStateObj.currentExample === "DOMDEMO") {
-    [...document.querySelectorAll(".card")].forEach((elem) =>
-      document.body.removeChild(elem)
-    );
-  }
-}
+setInterval(draw, 20);
+
+
+

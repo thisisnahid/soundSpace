@@ -4,13 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>soundSpace</title>
     <link rel="stylesheet" href="./dist/main.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-
+  
   <body>
-    <button id="canvas-demo">Canvas Demo</button>
-    <button id="DOM-demo">DOM Demo</button>
+    <canvas id="canvas"></canvas>
+    <footer>
+      <div class="footer-left">
+        <h1 class="title">soundSpace</h1>
+        <div class='audio-controls'>
+          <i id='audio-play' class="fa fa-play"></i>
+          <i id='audio-pause' class="fa fa-pause hidden"></i>
+        </div>
+      </div>
+      <div class="links">
+        <span>
+          <a href="https://github.com/thisisnahid/soundSpace">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/nahid-siddiqui-73179ba9/">
+            LinkedIn
+          </a>
+        </span>
+      </div>
+    </footer>
+    <br/>
+    <audio loop src="/src/images/E-pad.mp3" id="audio"></audio>
     <script src="./dist/main.js"></script>
   </body>
 </html>
