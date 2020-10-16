@@ -1,23 +1,13 @@
 # Gameplay
-A sound drone is playing in the background. The user will be a blob and as the game starts, the sidescroll starts. As blocks appear, the blob can jump on them, which will trigger different sounds that add a melody to the sound drone. With each block hit, the background color will change as well. Bonus: there will be blocks occasionally to take off the last sounds added. There will be a reset button at the top if the user wants to start the sounds over at anytime. 
+A sound drone is playing in the background. The player can touch a block adding different sounds to the soundscape. 
 
 # MVP
 This site’s main features will be 
-	-start, pause, reset the game
-	-character jump
-	-side scroll
 	-sound with in-game triggers
-	-color changes
-	-modal with initial instructions
 
 # Architecture and Technologies
 - JS for game logic
-- Browserify
-- Web Audio API to trigger and handle audio
-- Web Animations API to assist with background animations
-- Gamepad API for controls
-- D3
-
+- Canvas
 
 # Wireframes
 - start page https://github.com/thisisnahid/soundSpace/blob/master/IMG_4999.jpg
