@@ -10,4 +10,4 @@ function Game() {
 
 window.game = new Game;
 
-module.exports = game;
+module.exports = Game;
