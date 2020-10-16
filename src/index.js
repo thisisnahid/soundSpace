@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 let playerHeight = 30;
 let playerWidth = 26;
 let playerX = 30;
-let playerY = 300;
+let playerY = 300;  
 
 let rightPressed = false;
 let leftPressed = false;
