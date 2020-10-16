@@ -1,5 +1,5 @@
 import game from "./lib/game";
-
+document.addEventListener("DOMContentLoaded", function () {
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -19,29 +19,6 @@ function drawImage(url, x, y, width, height) {
         ctx.drawImage(first, x, y, width, height)
     }
 }
-
-// function drawPlayerImage(url, x, y) {
-//     const first = new Image();
-//     first.src = url;
-//     first.onload = function () {
-//         ctx.drawPlayerImage(first, x, y, 20, 25)
-//         // ctx.drawPlayerImage(first, x, y, 30, 30),
-//         // ctx.drawPlayerImage(first, x, y, 30, 30),
-//         // ctx.drawPlayerImage(first, x, y, 30, 30)
-//     }
-// }
-
-
-// function drawFloor() {
-//     // const floor = ctx.fillRect(0, 453, 1000, 1000);
- 
-//     // const e = ctx.fillRect(200, 300, 20, 25);
-//     // const a = ctx.fillRect(310, 260, 20, 25);
-//     // const b = ctx.fillRect(420, 160, 20, 25);
-//     // const c = ctx.fillRect(540, 220, 20, 25);
-//     // const f = ctx.fillRect(660, 275, 20, 25);
-//     ctx.fillStyle = "#c3ebf1";
-// }
 
 function drawplayer() {
     ctx.beginPath();
@@ -292,6 +269,6 @@ function draw() {
 setInterval(draw, 20);
 
 
-
+})
 
 
