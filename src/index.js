@@ -1,4 +1,5 @@
 const Game = require("./lib/game");
+import game from "./lib/game";
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
