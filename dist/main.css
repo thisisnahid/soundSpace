@@ -1,6 +1,14 @@
+html {
+    background-color: black;
+}
+
 body{
-    background-color:#1b1b1b;
-    display:flex;
+    background:    url("images/stars.gif");
+    background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+    height: 800px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -9,50 +17,93 @@ body{
 }
 
 canvas {
-    background:    url("images/water.gif");
+    background:    url("images/stars.gif");
     background-size:     cover;                      
     background-repeat:   no-repeat;
     background-position: center center;
-    border: 3pt solid black;
+    border: 3pt solid white;
     border-radius: 8px;
     width: 800px;
     height: 500px;
 }
 
-footer {
-    display: flex;
-    flex-direction: row;
-    width: 57%;
-    background-color: thistle;
-    border-radius: 8px;
-    margin: 20px 100px 0 100px;
+h1 {
+    margin: 20px 0 10px 30px;
 }
 
-.footer-left {
+header {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    margin: 20px 100px 0 100px;
+    border: 3pt solid rgb(58, 21, 117);
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    margin: 0;
+}
+
+.bottom-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 10px;
+    align-items: center;
+    float: left;
+    margin-left: 20px;
+}
+
+.header-left {
     display: flex;
     float: left;
     flex-direction: column;
     width: 100%;
-    text-align: center;
+}
+
+.links-container {
+    width: 100%;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.links-subcontainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .links {
-    display: flex;
-    width: 100%;
+    margin: 15px;
+    justify-content: right;
 }
+
 a { 
-    justify-self: flex-end;
     text-decoration: none;
     color: black;
+    padding-left: 10px;
+    font-size: 15px;
+    float: right;
+}
+h4 {
+    float: right;
+    font-size: 10px;
+    margin: 0;
+    padding-right: 10px;
 }
 
 .audio-controls {
     color: black;
-    font-size: 13px;
+    font-size: 30px;
     cursor: pointer;
     display: flex;
     justify-content: center;
-    padding-bottom: 15px;
+    margin: 13px;
 }
 
 .hidden {
