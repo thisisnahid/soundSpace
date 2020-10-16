@@ -126,13 +126,13 @@ function handlePlay(audio) {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawplayer();
-    drawImage("src/images/yellow.png", 200, 300, 20, 25);
-    drawImage("src/images/blue.png", 310, 260, 20, 25);
-    drawImage("src/images/green.png", 420, 160, 20, 25);
-    drawImage("src/images/purple.png", 540, 220, 20, 25);
-    drawImage("src/images/pink.png", 660, 275, 20, 25);
+    drawImage("https://github.com/thisisnahid/soundSpace/blob/master/src/images/yellow.png", 200, 300, 20, 25);
+    drawImage("https://github.com/thisisnahid/soundSpace/blob/master/src/images/blue.png", 310, 260, 20, 25);
+    drawImage("https://github.com/thisisnahid/soundSpace/blob/master/src/images/green.png", 420, 160, 20, 25);
+    drawImage("https://github.com/thisisnahid/soundSpace/blob/master/src/images/purple.png", 540, 220, 20, 25);
+    drawImage("https://github.com/thisisnahid/soundSpace/blob/master/src/images/pink.png", 660, 275, 20, 25);
     // drawImage("src/images/rocket.png", playerX-30, playerY-25, 50, 40)
-    drawImage("src/images/orb.png", playerX-30, playerY-30, 57, 60)
+    drawImage("https://github.com/thisisnahid/soundSpace/blob/master/src/images/orb.png", playerX-30, playerY-30, 57, 60)
     // audio.play();
 
     if (rightPressed) {
